@@ -5,11 +5,38 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('abc'),
+    return const Scaffold(
+      backgroundColor: Colors.black,
+      body: DecoratedBox(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage("assets/images/background_image_chair.jpg"),
+            opacity: 0.5,
+            fit: BoxFit.cover,
+          ),
+        ),
+        child: Padding(
+          padding: EdgeInsets.all(30.0),
+          child: CustomScrollView(
+            slivers: [
+              SliverFillRemaining(
+                hasScrollBody: false,
+                child: Stack(
+                  children: [
+                    Align(
+                        alignment: Alignment.bottomCenter,
+                        child: Text("Criar conta",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500)))
+                  ],
+                ),
+              )
+            ],
+          ),
+        ),
       ),
-      body: Container(),
     );
   }
 }
