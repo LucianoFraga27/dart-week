@@ -5,10 +5,10 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       backgroundColor: Colors.black,
       body: DecoratedBox(
-        decoration: BoxDecoration(
+        decoration: const BoxDecoration(
           image: DecorationImage(
             image: AssetImage("assets/images/background_image_chair.jpg"),
             opacity: 0.5,
@@ -22,8 +22,18 @@ class LoginPage extends StatelessWidget {
               SliverFillRemaining(
                 hasScrollBody: false,
                 child: Stack(
+                  alignment: Alignment.center,
                   children: [
-                    Align(
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Image.asset("assets/images/imgLogo.png"),
+                        TextFormField(
+                          decoration: InputDecoration(label: Text("Email")),
+                        )
+                      ],
+                    ),
+                    const Align(
                         alignment: Alignment.bottomCenter,
                         child: Text("Criar conta",
                             style: TextStyle(
