@@ -1,5 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:asyncstate/widget/async_state_builder.dart';
+import 'package:dw_barbershop/src/core/ui/widgets/barbershop_loader.dart';
 import 'package:dw_barbershop/src/future/splash/splash_page.dart';
 import 'package:flutter/material.dart';
 
@@ -8,9 +10,14 @@ class BarberShopApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: "DW barbershop",
-      routes: {'/': (_) => SplashPage()},
-    );
+    return AsyncStateBuilder(
+        customLoader: BarbershopLoader(),
+        builder: (asyncNavigatorObserver) {
+          return MaterialApp(
+            navigatorObservers: [asyncNavigatorObserver],
+            title: "DW barbershop",
+            routes: {'/': (_) => SplashPage()},
+          );
+        });
   }
 }
