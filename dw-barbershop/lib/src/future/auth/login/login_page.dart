@@ -1,5 +1,6 @@
 import 'package:dw_barbershop/src/core/ui/constants.dart';
 import 'package:dw_barbershop/src/core/ui/helpers/form_helper.dart';
+import 'package:dw_barbershop/src/core/ui/helpers/messages.dart';
 import 'package:dw_barbershop/src/future/auth/login/login_vm.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -107,7 +108,8 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                               onPressed: () {
                                 switch (formKey.currentState?.validate()) {
                                   case (false || null):
-                                    print("error, campos invalidos");
+                                    Messages.showError(
+                                        "Campos inválidos", context);
                                     break;
                                   case (true):
                                     login(emailEC.text, passwordEC.text);
