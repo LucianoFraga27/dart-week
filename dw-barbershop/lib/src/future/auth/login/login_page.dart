@@ -26,7 +26,7 @@ class _LoginPageState extends ConsumerState<LoginPage> {
 
   @override
   Widget build(BuildContext context) {
-    final loginVM = ref.watch(loginVmProvider.notifier);
+    final LoginVm(:login) = ref.watch(loginVmProvider.notifier);
 
     return Scaffold(
       backgroundColor: Colors.black,
@@ -104,7 +104,15 @@ class _LoginPageState extends ConsumerState<LoginPage> {
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                   minimumSize: const Size.fromHeight(56)),
-                              onPressed: () {},
+                              onPressed: () {
+                                switch (formKey.currentState?.validate()) {
+                                  case (false || null):
+                                    print("error, campos invalidos");
+                                    break;
+                                  case (true):
+                                    login(emailEC.text, passwordEC.text);
+                                }
+                              },
                               child: const Text("ACESSAR"))
                         ],
                       ),
